@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch (Debug)",
+            "type": "coreclr",
+            "request": "attach",
+            "preLaunchTask": "Build, Copy and Run (Debug)",
+            "processId": "${command:pickProcess}"
+        },
+
+        {
+            "name": "Launch (Release)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build And Copy (Release)",
+            "program": "steam",
+            "args": [ "steam://rungameid/516750" ]
+        }
+    ]
+}

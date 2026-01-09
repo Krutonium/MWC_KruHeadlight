@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build (Debug)",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [ "build", "-p:Configuration=Debug" ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
+        },
+
+        {
+            "label": "Build (Release)",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [ "build", "-p:Configuration=Release" ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build"
+        },
+
+        {
+            "label": "Build And Copy (Debug)",
+            "type": "shell",
+            "command": "cp",
+            "args": [ "${workspaceFolder}/Headlight/bin/Debug/net20/Headlight.{dll,pdb}", "/home/krutonium/.local/share/Steam/steamapps/common/My Summer Car/Mods" ],
+            "group": "build",
+            "dependsOn": [ "Build (Debug)" ]
+        },
+
+        {
+            "label": "Build And Copy (Release)",
+            "type": "shell",
+            "command": "cp",
+            "args": [ "${workspaceFolder}/Headlight/bin/Release/net20/Headlight.{dll,pdb}", "/home/krutonium/.local/share/Steam/steamapps/common/My Summer Car/Mods" ],
+            "group": "build",
+            "dependsOn": [ "Build (Release)" ]
+        },
+
+        {
+            "label": "Build, Copy and Run (Debug)",
+            "type": "shell",
+            "command": "steam",
+            "args": [ "steam://rungameid/516750" ],
+            "group": "build",
+            "dependsOn": [ "Build And Copy (Debug)" ]
+        }
+    ]
+}
